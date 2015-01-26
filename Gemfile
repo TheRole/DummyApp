@@ -32,6 +32,7 @@ gem 'uglifier'
 gem 'pry-rails'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.0.1'
+gem 'tzinfo-data', platform: :mingw
 
 group :test do
   gem 'minitest'
@@ -40,7 +41,9 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
 
+  gem 'rspec', '~>3.1.0'
   gem 'rspec-rails', '~> 3.1.0'
+  gem 'rspec-collection_matchers'
 end
 
 # gem 'sprockets-rails', github: 'rails/sprockets-rails'

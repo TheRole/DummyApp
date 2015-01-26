@@ -4,11 +4,11 @@ describe Role do
   context "Role *Create* methods" do
     it "New/Create invalid" do
       role = Role.new
-      role.save.should be_false
+      expect(role.save).to be_falsey
 
-      role.should have(1).error_on(:name)
-      role.should have(1).error_on(:title)
-      role.should have(1).error_on(:description)
+      expect(role).to have(1).error_on(:name)
+      expect(role).to have(1).error_on(:title)
+      expect(role).to have(1).error_on(:description)
     end
 
     it "New/Create valid, without Role hash" do
@@ -18,27 +18,27 @@ describe Role do
       role.title       = :user_title
       role.description = :role_description
 
-      role.save.should be_true
+      expect(role.save).to be_truthy
     end
 
     it "New/Create valid, without Role hash (2)" do
-      Role.new(
+      expect(Role.new(
         name: :user,
         title: :user_title,
         description: :role_description
-      ).save.should be_true
+      ).save).to be_truthy
     end
 
     it "New/Create, without Role hash, default Role hash value" do
       role = FactoryGirl.create :role_without_rules
-      role.the_role.should == "{}"
-      role.to_hash.should  == {}
+      expect(role.the_role).to eq("{}")
+      expect(role.to_hash).to  eq({})
     end
 
     it "New/Create, role methods result types" do
       role = FactoryGirl.create :role_without_rules
-      role.the_role.should be_an_instance_of String
-      role.to_hash.should  be_an_instance_of Hash
+      expect(role.the_role).to be_an_instance_of String
+      expect(role.to_hash).to  be_an_instance_of Hash
     end
 
     it "New/Create, role have to be stored in DB as JSON String" do
@@ -49,8 +49,8 @@ describe Role do
         the_role: { any_section: { any_rule: true } }
       )
 
-      r.the_role.class.should eq String
-      r.the_role.should eq "{\"any_section\":{\"any_rule\":true}}"
+      expect(r.the_role.class).to eq String
+      expect(r.the_role).to eq "{\"any_section\":{\"any_rule\":true}}"
 
       r = Role.create!(
         name:  :test_name1,
@@ -59,8 +59,8 @@ describe Role do
         the_role: "{\"any_section\":{\"any_rule\":false}}"
       )
 
-      r.the_role.class.should eq String
-      r.the_role.should eq "{\"any_section\":{\"any_rule\":false}}"
+      expect(r.the_role.class).to eq String
+      expect(r.the_role).to eq "{\"any_section\":{\"any_rule\":false}}"
     end
   end
 
@@ -70,23 +70,23 @@ describe Role do
     end
 
     it "should have empty Role hash" do
-      @role.to_hash.should == {}
+      expect(@role.to_hash).to eq({})
     end
 
     it "Create section" do
       @role.create_section(:articles)
-      @role.to_hash.should == { "articles" => {} }
+      expect(@role.to_hash).to eq({ "articles" => {} })
     end
 
     it "Create rule (with section)" do
       @role.create_section(:articles)
       @role.create_rule(:articles, :index)
-      @role.to_hash.should == { "articles" => { "index" => false } }
+      expect(@role.to_hash).to eq({ "articles" => { "index" => false } })
     end
 
     it "Create rule (without section)" do
       @role.create_rule(:articles, :index)
-      @role.to_hash.should == { "articles" => { "index" => false } }
+      expect(@role.to_hash).to eq({ "articles" => { "index" => false } })
     end
   end
 
@@ -96,11 +96,11 @@ describe Role do
     end
 
     it "aliace methods" do
-      @role.has?(:pages, :index).should      be_true
-      @role.has_role?(:pages, :index).should be_true
+      expect(@role.has?(:pages, :index)).to      be_truthy
+      expect(@role.has_role?(:pages, :index)).to be_truthy
 
-      @role.has?(:pages, :secret).should      be_false
-      @role.has_role?(:pages, :secret).should be_false
+      expect(@role.has?(:pages, :secret)).to      be_falsey
+      expect(@role.has_role?(:pages, :secret)).to be_falsey
     end
   end
 
@@ -110,21 +110,21 @@ describe Role do
     end
 
     it "has access to pages/index" do
-      @role.has_role?(:pages, :index).should be_true
+      expect(@role.has_role?(:pages, :index)).to be_truthy
     end
 
     it "set pages/index on false" do
       @role.rule_off(:pages, :index)
-      @role.has_role?(:pages, :index).should be_false
+      expect(@role.has_role?(:pages, :index)).to be_falsey
     end
 
     it "has no access to pages/secret" do
-      @role.has_role?(:pages, :secret).should be_false
+      expect(@role.has_role?(:pages, :secret)).to be_falsey
     end
 
     it "set pages/secret on true" do
       @role.rule_on(:pages, :secret)
-      @role.has_role?(:pages, :secret).should be_true
+      expect(@role.has_role?(:pages, :secret)).to be_truthy
     end
   end
 
@@ -134,11 +134,11 @@ describe Role do
     end
 
     it "Role.with_name(:name) method" do
-      Role.with_name(:user).should  be_an_instance_of Role
-      Role.with_name('user').should be_an_instance_of Role
+      expect(Role.with_name(:user)).to  be_an_instance_of Role
+      expect(Role.with_name('user')).to be_an_instance_of Role
 
-      Role.with_name(:moderator).should  be_nil
-      Role.with_name('moderator').should be_nil
+      expect(Role.with_name(:moderator)).to  be_nil
+      expect(Role.with_name('moderator')).to be_nil
     end
   end
 
@@ -148,26 +148,26 @@ describe Role do
     end
 
     it "*has_section?* method" do
-      @role.has_section?(:pages).should    be_true
-      @role.has_section?(:articles).should be_false
+      expect(@role.has_section?(:pages)).to    be_truthy
+      expect(@role.has_section?(:articles)).to be_falsey
     end
 
     it "has pages section" do
-      @role.to_hash['pages'].should be_an_instance_of Hash
+      expect(@role.to_hash['pages']).to be_an_instance_of Hash
     end
 
     it "has pages/index value" do
-      @role.to_hash['pages']['index'].should be_true
+      expect(@role.to_hash['pages']['index']).to be_truthy
     end
 
     it "delete rule pages/index" do
       @role.delete_rule(:pages, :index)
-      @role.to_hash['pages']['index'].should be_nil
+      expect(@role.to_hash['pages']['index']).to be_nil
     end
 
     it "delete section pages" do
       @role.delete_section(:pages)
-      @role.to_hash['pages'].should be_nil
+      expect(@role.to_hash['pages']).to be_nil
     end
   end
 
@@ -177,11 +177,11 @@ describe Role do
     end
 
     it "to_hash on empty rules set" do
-      @role.to_hash.should == {}
+      expect(@role.to_hash).to eq({})
     end
 
     it "to_json on empty rules set" do
-      @role.to_json.should == "{}"
+      expect(@role.to_json).to eq("{}")
     end
   end
 
@@ -191,50 +191,55 @@ describe Role do
     end
 
     it "should has true rules" do
-      @role.has?(:pages, :index).should  be_true
-      @role.has?(:pages, :edit).should   be_true
-      @role.has?(:pages, :update).should be_true
-      @role.has?(:pages, :secret).should be_false
+      expect(@role.has?(:pages, :index)).to  be_truthy
+      expect(@role.has?(:pages, :edit)).to   be_truthy
+      expect(@role.has?(:pages, :update)).to be_truthy
+      expect(@role.has?(:pages, :secret)).to be_falsey
 
-      @role.has?(:articles, :index).should be_false
+      expect(@role.has?(:articles, :index)).to be_falsey
     end
 
     it "should has true rules" do
       @role.update_role({ articles: { index: true } })
 
-      @role.has?(:pages, :index).should  be_false
-      @role.has?(:pages, :edit).should   be_false
-      @role.has?(:pages, :update).should be_false
-      @role.has?(:pages, :secret).should be_false
+      expect(@role.has?(:pages, :index)).to  be_falsey
+      expect(@role.has?(:pages, :edit)).to   be_falsey
+      expect(@role.has?(:pages, :update)).to be_falsey
+      expect(@role.has?(:pages, :secret)).to be_falsey
 
-      @role.has?(:articles, :index).should be_true
+      expect(@role.has?(:articles, :index)).to be_truthy
     end
 
     it "should has any rules 1" do
-      @role.has?(:pages, :index).should  be_true
-      @role.has?(:pages, :update).should be_true
+      expect(@role.has?(:pages, :index)).to  be_truthy
+      expect(@role.has?(:pages, :update)).to be_truthy
 
-      @role.any?({ pages: :index  }).should be_true
-      @role.any?({ pages: :update }).should be_true
-      @role.any?({ pages: :index, pages: :update}).should be_true
+      expect(@role.any?({ pages: [:index]  })).to be_truthy
+      expect(@role.any?({ pages: [:update] })).to be_truthy
+      expect(@role.any?({ pages: [:index, :update]})).to be_truthy
+      expect(@role.any?(undefined_section: [:index], pages:[:index])).to be_truthy
     end
 
     it "should has any rules 2" do
-      @role.has?(:pages,    :index).should be_true
-      @role.has?(:articles, :index).should be_false
+      expect(@role.has?(:pages,    :index)).to be_truthy
+      expect(@role.has?(:articles, :index)).to be_falsey
 
-      @role.any?({ pages:    :index }).should be_true
-      @role.any?({ articles: :index }).should be_false
+      expect(@role.any?({ pages:    [:index] })).to be_truthy
+      expect(@role.any?({ articles: [:index] })).to be_falsey
 
-      @role.any?({ articles: :index }).should be_false
-      @role.any?({ pages: :index, articles: :index}).should be_true
-      @role.any?({ pages: :index, pages:    :update}).should be_true
+      expect(@role.any?({ articles: [:index] })).to be_falsey
+      expect(@role.any?({ pages: [:index], articles: [:index]})).to be_truthy
+      expect(@role.any?({ pages: [:index, :update]})).to be_truthy
     end
 
     it "should has any rules 3, easy syntaxis" do
-      @role.any?(articles: :index).should be_false
-      @role.any?(pages: :index, articles: :index).should be_true
-      @role.any?(pages: :index, pages:    :update).should be_true
+      expect(@role.any?(articles: [:index])).to be_falsey
+      expect(@role.any?(pages: [:index], articles: [:index])).to be_truthy
+      expect(@role.any?(pages: [:index, :update])).to be_truthy
+    end
+
+    it "should hasn't any rules" do
+      expect(@role.any?(undefined_section:[:new])).to be_falsey
     end
   end
 end

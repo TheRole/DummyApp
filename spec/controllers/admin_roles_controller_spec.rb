@@ -11,14 +11,14 @@ describe Admin::RolesController do
       %w{ index new }.each do |action|
         it action.upcase do
           get action
-          response.should redirect_to new_user_session_path
+          expect(response).to redirect_to new_user_session_path
         end
       end
 
       %w{ edit update create destroy }.each do |action|
         it action.upcase do
           get action, { id: @role.id }
-          response.should redirect_to new_user_session_path
+          expect(response).to redirect_to new_user_session_path
         end
       end
     end
@@ -35,14 +35,14 @@ describe Admin::RolesController do
         %w{ index new }.each do |action|
           it action.upcase do
             get action
-            response.body.should match access_denied_match
+            expect(response.body).to match access_denied_match
           end
         end
 
         %w{ edit update create destroy }.each do |action|
           it action.upcase do
             get action, { id: @role.id }
-            response.body.should match access_denied_match
+            expect(response.body).to match access_denied_match
           end
         end
       end

@@ -16,3 +16,4 @@
 .rvmrc
 /log/*.log
 /tmp
+.idea

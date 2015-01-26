@@ -3,27 +3,27 @@ require 'spec_helper'
 describe Hash do
   context "METHODS" do
     it "underscorify_keys" do
-      Hash.new.respond_to?(:underscorify_keys).should eq true 
+      expect(Hash.new.respond_to?(:underscorify_keys)).to eq true 
     end
 
     it "underscorify_keys!" do
-      Hash.new.respond_to?(:underscorify_keys!).should eq true 
+      expect(Hash.new.respond_to?(:underscorify_keys!)).to eq true 
     end
 
     it "deep_reset" do
-      Hash.new.respond_to?(:deep_reset).should eq true 
+      expect(Hash.new.respond_to?(:deep_reset)).to eq true 
     end
     
     it "deep_reset!" do
-      Hash.new.respond_to?(:deep_reset!).should eq true 
+      expect(Hash.new.respond_to?(:deep_reset!)).to eq true 
     end
 
     it "deep_merge" do
-      Hash.new.respond_to?(:deep_merge).should eq true
+      expect(Hash.new.respond_to?(:deep_merge)).to eq true
     end
     
     it "deep_merge!" do
-      Hash.new.respond_to?(:deep_merge!).should eq true
+      expect(Hash.new.respond_to?(:deep_merge!)).to eq true
     end
   end
 
@@ -45,8 +45,8 @@ describe Hash do
           'good_morning_mom' => 1
         }
       }
-      hash.underscorify_keys.should eq result
-      hash.should_not               eq result
+      expect(hash.underscorify_keys).to eq result
+      expect(hash).not_to               eq result
     end
 
     it "UNDERSCORIFY! hash keys" do
@@ -62,8 +62,8 @@ describe Hash do
           'hello' => 1
         }
       }
-      hash.underscorify_keys!.should eq result
-      hash.should                    eq result
+      expect(hash.underscorify_keys!).to eq result
+      expect(hash).to                    eq result
     end    
   end
 
@@ -101,7 +101,7 @@ describe Hash do
         }
       }
       hash = @hash.deep_reset
-      hash.should eq result
+      expect(hash).to eq result
     end
 
     it "DEEP RESET hash values to nil :test" do
@@ -120,7 +120,7 @@ describe Hash do
         }
       }
       hash = @hash.deep_reset(:test)
-      hash.should eq result
+      expect(hash).to eq result
     end
 
     it "DEEP RESET! hash values to nil" do
@@ -139,8 +139,8 @@ describe Hash do
         }
       }
       hash = @hash.deep_reset(:test)
-      hash.should      eq  result
-      @hash.should_not eq result
+      expect(hash).to      eq  result
+      expect(@hash).not_to eq result
     end
   end
 
@@ -158,7 +158,7 @@ describe Hash do
           'edit' => nil
         }
       }
-      hash.deep_reset!(nil).should eq result
+      expect(hash.deep_reset!(nil)).to eq result
     end
   end
 
@@ -187,7 +187,7 @@ describe Hash do
         }
       }
 
-      first_hash.deep_merge!(second_hash).should eq result
+      expect(first_hash.deep_merge!(second_hash)).to eq result
     end
 
     it "should merge 2 hash (1st 3-lavels, 2nd - 2 levels => 2 level)" do
@@ -217,7 +217,7 @@ describe Hash do
         }
       }
 
-      first_hash.deep_merge!(second_hash).should eq result
+      expect(first_hash.deep_merge!(second_hash)).to eq result
     end
   end
 
@@ -250,7 +250,7 @@ describe Hash do
         }
       }
       @base_hash.deep_reset!
-      @base_hash.should == result
+      expect(@base_hash).to eq(result)
     end
 
     it 'should merge 2 hashes' do
@@ -266,7 +266,7 @@ describe Hash do
 
       @base_hash.deep_reset!(false)
       @base_hash.deep_merge! @incoming_hash
-      @base_hash.should == result
+      expect(@base_hash).to eq(result)
     end
   end
 end

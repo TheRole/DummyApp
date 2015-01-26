@@ -4,32 +4,32 @@ describe WelcomeController do
   describe "GET for GUESTS" do
     it "*INDEX* test *subject* object" do
       get 'index'
-      subject.class.should == WelcomeController
+      expect(subject.class).to eq(WelcomeController)
     end
 
     it "*INDEX* returns http success" do
       get 'index'
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "*INDEX* render :index page" do
       get 'index'
-      response.should render_template :index
+      expect(response).to render_template :index
     end
 
     it "*INDEX* *current_user* should be nil" do
       get 'index'
-      subject.current_user.should be_nil
+      expect(subject.current_user).to be_nil
     end
     
     it "*PROFILE* will be redirect" do
       get 'profile'
-      response.should be_redirect
+      expect(response).to be_redirect
     end
 
     it "*PROFILE* will be redirect to new_user_session_path page" do
       get 'profile'
-      response.should redirect_to new_user_session_path
+      expect(response).to redirect_to new_user_session_path
     end
   end
 
@@ -44,22 +44,22 @@ describe WelcomeController do
     end
 
     it "One user should be exists" do
-      User.count.should be 1
+      expect(User.count).to be 1
     end
 
     it "*PROFILE* should render :profile page" do
       get 'profile'
-      response.should render_template :profile
+      expect(response).to render_template :profile
     end
 
     it "*PROFILE* should not to be redirect" do
       get 'profile'
-      response.should_not be_redirect
+      expect(response).not_to be_redirect
     end
 
     it "*PROFILE* *current_user* helper should return user" do
       get 'profile'
-      subject.current_user.should == @user
+      expect(subject.current_user).to eq(@user)
     end
   end
 

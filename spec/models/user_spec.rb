@@ -14,21 +14,21 @@ describe User do
       end
 
       it 'should have test varaibles' do
-        @user_1.should be_instance_of User
-        @user_2.should be_instance_of User
+        expect(@user_1).to be_instance_of User
+        expect(@user_2).to be_instance_of User
 
-        @user_1_page.should be_instance_of Page
-        @user_2_page.should be_instance_of Page
+        expect(@user_1_page).to be_instance_of Page
+        expect(@user_2_page).to be_instance_of Page
       end
 
       it 'should be owner of page' do
-        @user_1.owner?(@user_1_page).should be_true
-        @user_2.owner?(@user_2_page).should be_true
+        expect(@user_1.owner?(@user_1_page)).to be_truthy
+        expect(@user_2.owner?(@user_2_page)).to be_truthy
       end
 
       it 'should not be owner of page' do
-        @user_1.owner?(@user_2_page).should be_false
-        @user_2.owner?(@user_1_page).should be_false
+        expect(@user_1.owner?(@user_2_page)).to be_falsey
+        expect(@user_2.owner?(@user_1_page)).to be_falsey
       end
     end
 
@@ -44,13 +44,13 @@ describe User do
       end
 
       it 'Moderator is owner of any Page' do
-        @moderator.owner?(@moderator_page).should be_true
-        @moderator.owner?(@user_page).should      be_true
+        expect(@moderator.owner?(@moderator_page)).to be_truthy
+        expect(@moderator.owner?(@user_page)).to      be_truthy
       end
 
       it 'User is owner of his Pages' do
-        @user.owner?(@user_page).should      be_true
-        @user.owner?(@moderator_page).should be_false
+        expect(@user.owner?(@user_page)).to      be_truthy
+        expect(@user.owner?(@moderator_page)).to be_falsey
       end
     end
 
@@ -82,16 +82,16 @@ describe User do
     end
 
     it "Create test user" do
-      User.count.should be 1
+      expect(User.count).to be 1
     end
 
     it "User have not any role" do
-      @user.role.should be_nil
+      expect(@user.role).to be_nil
     end
 
     it "User should gives false on any request" do
-      @user.has_role?(:pages, :index).should     be_false
-      @user.has_role?(:moderator, :pages).should be_false
+      expect(@user.has_role?(:pages, :index)).to     be_falsey
+      expect(@user.has_role?(:moderator, :pages)).to be_falsey
     end
   end
 
@@ -104,61 +104,61 @@ describe User do
     end
     
     it "User and Role should exists" do
-      Role.count.should be 1
-      User.count.should be 1
+      expect(Role.count).to be 1
+      expect(User.count).to be 1
     end
 
     it "Role should nave name :user" do
-      Role.first.name.should eq 'user'
+      expect(Role.first.name).to eq 'user'
     end
 
     it "User should have default Role" do
-      @user.role.should_not be_nil
+      expect(@user.role).not_to be_nil
     end
 
     it "User has Role for Pages" do
-      @user.has_role?(:pages, :index).should   be_true
-      @user.has_role?(:pages, :destroy).should be_true
+      expect(@user.has_role?(:pages, :index)).to   be_truthy
+      expect(@user.has_role?(:pages, :destroy)).to be_truthy
     end
 
     it "User has disabled rule" do
-      @user.has_role?(:pages, :secret).should be_false
+      expect(@user.has_role?(:pages, :secret)).to be_falsey
     end
 
     it "User try to have access to undefined rule" do
-      @user.has_role?(:pages, :wrong_name).should be_false
+      expect(@user.has_role?(:pages, :wrong_name)).to be_falsey
     end
 
     it "User has not Role for Atricles" do
-      @user.has_role?(:articles, :index).should be_false
+      expect(@user.has_role?(:articles, :index)).to be_falsey
     end
 
     # Any
     it "should has any rules 1" do
-      @user.has_role?(:pages, :index).should  be_true
-      @user.has_role?(:pages, :update).should be_true
+      expect(@user.has_role?(:pages, :index)).to  be_truthy
+      expect(@user.has_role?(:pages, :update)).to be_truthy
 
-      @user.any_role?({ pages: :index  }).should be_true
-      @user.any_role?({ pages: :update }).should be_true
-      @user.any_role?({ pages: :index, pages: :update}).should be_true
+      expect(@user.any_role?({ pages: :index  })).to be_truthy
+      expect(@user.any_role?({ pages: :update })).to be_truthy
+      expect(@user.any_role?({ pages: :index, pages: :update})).to be_truthy
     end
 
     it "should has any rules 2" do
-      @user.has_role?(:pages,    :index).should be_true
-      @user.has_role?(:articles, :index).should be_false
+      expect(@user.has_role?(:pages,    :index)).to be_truthy
+      expect(@user.has_role?(:articles, :index)).to be_falsey
 
-      @user.any_role?({ pages:    :index }).should be_true
-      @user.any_role?({ articles: :index }).should be_false
+      expect(@user.any_role?({ pages:    :index })).to be_truthy
+      expect(@user.any_role?({ articles: :index })).to be_falsey
 
-      @user.any_role?({ articles: :index }).should be_false
-      @user.any_role?({ pages: :index, articles: :index}).should be_true
-      @user.any_role?({ pages: :index, pages:    :update}).should be_true
+      expect(@user.any_role?({ articles: :index })).to be_falsey
+      expect(@user.any_role?({ pages: :index, articles: :index})).to be_truthy
+      expect(@user.any_role?({ pages: :index, pages:    :update})).to be_truthy
     end
 
     it "should has any rules 3, easy syntaxis" do
-      @user.any_role?(articles: :index).should be_false
-      @user.any_role?(pages: :index, articles: :index).should be_true
-      @user.any_role?(pages: :index, pages:    :update).should be_true
+      expect(@user.any_role?(articles: :index)).to be_falsey
+      expect(@user.any_role?(pages: :index, articles: :index)).to be_truthy
+      expect(@user.any_role?(pages: :index, pages:    :update)).to be_truthy
     end
   end
 end
