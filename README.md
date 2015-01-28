@@ -27,10 +27,8 @@
 ### How to get?
 
 ```
-git clone git@github.com:the-teacher/the_role.git
-
-cd the_role/spec/dummy_app/
-
+git clone git@github.com:TheRole/DummyApp.git
+cd DummyApp
 bundle
 ```
 
