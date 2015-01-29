@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0'
+gem 'rails', '4.2.0'
 
 gem 'pg'
 gem 'mysql2'
@@ -19,14 +19,14 @@ gem 'autoprefixer-rails'
 #~~~~~~~~~~~~~~~~~ TheRole ~~~~~~~~~~~~~~~~~#
 gem 'the_role',
   github: 'TheRole/TheRoleApi',
-  tag: "v2.8"
-  # branch: 'master'
+  branch: 'master'
+  # tag: "v2.8"
   # path: '../TheRoleApi'
 
 gem 'the_role_bootstrap3_ui',
   github: 'TheRole/TheRoleManagementPanelBootstrap3',
-  tag: "v2.8"
-  # branch: 'master'
+  branch: 'master'
+  # tag: "v2.8"
   # path: "../TheRoleManagementPanelBootstrap3"
 #~~~~~~~~~~~~~~~~~ TheRole ~~~~~~~~~~~~~~~~~#
 

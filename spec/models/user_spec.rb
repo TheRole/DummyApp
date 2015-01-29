@@ -102,7 +102,7 @@ describe User do
       FactoryGirl.create(:user)
       @user = User.first
     end
-    
+
     it "User and Role should exists" do
       expect(Role.count).to be 1
       expect(User.count).to be 1
@@ -140,7 +140,7 @@ describe User do
 
       expect(@user.any_role?({ pages: :index  })).to be_truthy
       expect(@user.any_role?({ pages: :update })).to be_truthy
-      expect(@user.any_role?({ pages: :index, pages: :update})).to be_truthy
+      expect(@user.any_role?({ pages: [:index, :update]})).to be_truthy
     end
 
     it "should has any rules 2" do
@@ -152,13 +152,13 @@ describe User do
 
       expect(@user.any_role?({ articles: :index })).to be_falsey
       expect(@user.any_role?({ pages: :index, articles: :index})).to be_truthy
-      expect(@user.any_role?({ pages: :index, pages:    :update})).to be_truthy
+      expect(@user.any_role?({ pages: [:index, :update]})).to be_truthy
     end
 
     it "should has any rules 3, easy syntaxis" do
       expect(@user.any_role?(articles: :index)).to be_falsey
       expect(@user.any_role?(pages: :index, articles: :index)).to be_truthy
-      expect(@user.any_role?(pages: :index, pages:    :update)).to be_truthy
+      expect(@user.any_role?(pages: [:index, :update])).to be_truthy
     end
   end
 end

@@ -1,21 +1,16 @@
 RailsApp::Application.routes.draw do
   devise_for :users
+  root to: 'welcome#index'
 
-  concern :the_role, TheRole::AdminRoutes.new
-
-  namespace :admin do
-    concerns :the_role
-  end
-
-  root :to => 'welcome#index'
+  TheRoleBootstrap3Ui::Routes.mixin(self)
 
   get 'welcome/index'
   get 'welcome/profile'
-  get 'autologin' => 'welcome#autologin', :as => :autologin
 
-  put 'users/change_role' => "users#change_role", :as => :change_role
+  get 'autologin'         => 'welcome#autologin', as: :autologin
+  put 'users/change_role' => "users#change_role", as: :user_change_role
 
-  resources  :users, :only => [:edit, :update]
+  resources  :users, only: [:edit, :update]
 
   resources  :pages do
     collection do
