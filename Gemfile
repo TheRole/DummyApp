@@ -16,16 +16,20 @@ gem 'autoprefixer-rails'
 
 #~~~~~~~~~~~~~~~~~ TheRole ~~~~~~~~~~~~~~~~~#
 gem 'the_role',
-  github: 'TheRole/TheRoleApi',
-  branch: 'master'
+  # github: 'TheRole/TheRoleApi',
+  # branch: 'master'
   # tag: "v2.8"
-  # path: '../TheRoleApi'
+  path: '../TheRoleApi'
 
-gem 'the_role_bootstrap3_ui',
-  github: 'TheRole/TheRoleManagementPanelBootstrap3',
-  branch: 'master'
+gem 'the_role_management_panel',
+  # github: 'TheRole/TheRoleManagementPanel',
+  # branch: 'master'
   # tag: "v2.8"
-  # path: "../TheRoleManagementPanelBootstrap3"
+  path: "../the_role_management_panel"
+
+gem 'the_notification',
+  github: 'TheProfitCMS/the_notification',
+  branch: 'master'
 #~~~~~~~~~~~~~~~~~ TheRole ~~~~~~~~~~~~~~~~~#
 
 # Other

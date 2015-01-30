@@ -8,8 +8,8 @@
 
     = csrf_meta_tags
 
-    = yield :js 
-    = yield :css 
+    = yield :js
+    = yield :css
 
   %body
     .container
@@ -30,20 +30,24 @@
             %li= link_to 'pages/manage', manage_pages_path
             %li= link_to 'pages/my',     my_pages_path
             %li= link_to 'admin/roles',  admin_roles_path
-          
+            %li ____
+            %li= link_to 'admin/roles (js)', admin_roles_path, remote: true
+
           = render :partial => 'layouts/current_user_info'
 
         .col-md-9.main_content
-          - if flash[:notice]
-            .alert.alert-success
-              %a.close{:href => '#', 'data-dismiss' => :alert } &times;
-              = flash[:notice]
+          = render partial: 'the_notification/flash', locals: { format: :json }
 
-          - if flash[:error]
-            .alert.alert-danger
-              %a.close{:href => '#', 'data-dismiss' => :alert } &times;
-              = flash[:error]
-          
+          / - if flash[:notice]
+          /   .alert.alert-success
+          /     %a.close{:href => '#', 'data-dismiss' => :alert } &times;
+          /     = flash[:notice]
+
+          / - if flash[:error]
+          /   .alert.alert-danger
+          /     %a.close{:href => '#', 'data-dismiss' => :alert } &times;
+          /     = flash[:error]
+
           = yield
           = yield :role_main
 

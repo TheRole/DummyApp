@@ -8,11 +8,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :set_locale
 
-  def access_denied
-    flash[:error] = t('the_role.access_denied')
-    redirect_to(:back)
-  end
-
   private
 
   def set_locale

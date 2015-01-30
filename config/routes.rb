@@ -2,7 +2,7 @@ RailsApp::Application.routes.draw do
   devise_for :users
   root to: 'welcome#index'
 
-  TheRoleBootstrap3Ui::Routes.mixin(self)
+  TheRoleManagementPanel::Routes.mixin(self)
 
   get 'welcome/index'
   get 'welcome/profile'
