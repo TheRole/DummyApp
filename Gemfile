@@ -21,7 +21,6 @@ gem 'the_role_api',
   branch: 'master'
   # tag: "v2.8"
 
-
 gem 'the_role_management_panel',
   # path: '../the_role_management_panel'
   github: 'TheRole/the_role_management_panel',
