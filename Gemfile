@@ -9,8 +9,6 @@ gem 'sqlite3'
 # User Model
 gem 'devise'
 
-gem 'test-unit' if RUBY_VERSION >= '2.2'
-
 # Bootstrap 3
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'sass-rails', '>= 3.2'
@@ -36,23 +34,22 @@ gem 'uglifier'
 gem 'pry-rails'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.0.1'
-gem 'tzinfo-data', platform: :mingw
 
 group :test do
   gem 'minitest'
   gem "minitest-rails"
+  gem 'test-unit' if RUBY_VERSION >= '2.2'
 
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
 
-  # gem 'rspec', '~>3.1.0'
-  # gem 'rspec-rails', '~> 3.1.0'
-  # gem 'rspec-collection_matchers'
-
-  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+  %w[
+    rspec-core
+    rspec-expectations
+    rspec-mocks
+    rspec-rails
+    rspec-support
+  ].each do |lib|
     gem lib, :git => "git://github.com/rspec/#{lib}.git", :branch => 'master'
   end
 end
-
-# gem 'sprockets-rails', github: 'rails/sprockets-rails'
-# gem 'coffee-rails',    github: 'rails/coffee-rails'
