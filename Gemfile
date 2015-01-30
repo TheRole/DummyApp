@@ -15,17 +15,18 @@ gem 'sass-rails', '>= 3.2'
 gem 'autoprefixer-rails'
 
 #~~~~~~~~~~~~~~~~~ TheRole ~~~~~~~~~~~~~~~~~#
-gem 'the_role',
-  # github: 'TheRole/TheRoleApi',
-  # branch: 'master'
+gem 'the_role_api',
+  # path: '../the_role_api'
+  github: 'TheRole/the_role_api',
+  branch: 'master'
   # tag: "v2.8"
-  path: '../TheRoleApi'
+
 
 gem 'the_role_management_panel',
-  # github: 'TheRole/TheRoleManagementPanel',
-  # branch: 'master'
+  # path: '../the_role_management_panel'
+  github: 'TheRole/the_role_management_panel',
+  branch: 'master'
   # tag: "v2.8"
-  path: "../the_role_management_panel"
 
 gem 'the_notification',
   github: 'TheProfitCMS/the_notification',
