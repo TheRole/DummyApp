@@ -19,3 +19,5 @@
 .idea
 
 Gemfile.lock
+
+# find . -name ".DS_Store" -delete
