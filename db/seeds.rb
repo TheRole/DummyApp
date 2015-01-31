@@ -27,7 +27,7 @@ Role.create!(
   the_role: { moderator: { pages: true } }
 )
 
-TheRole.create_admin_role!
+TheRole.create_admin!
 
 p "Roles created"
 
@@ -73,7 +73,7 @@ p "Users created"
 ##############################
 
 User.all.each do |user|
-  10.times do 
+  10.times do
     user.pages.create!(
       title:   Faker::Lorem.sentence,
       content: Faker::Lorem.paragraphs(3).join,

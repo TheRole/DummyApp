@@ -1,10 +1,15 @@
 class PagesController < ApplicationController
-  # Devise2 and TheRole before_actions
   before_action :login_required, except: [:index, :show]
   before_action :role_required,  except: [:index, :show]
 
-  before_action :set_page,       only:   [:edit, :update, :destroy]
-  before_action :owner_required, only:   [:edit, :update, :destroy]
+  # !!! WARNING !!!
+  #
+  # `@owner_check_object` variable have to be exists
+  # before check ownership via `owner_required` method
+  #
+  # You have to define `@owner_check_object` in `set_page` method
+  before_action :set_page,       only: [:edit, :update, :destroy]
+  before_action :owner_required, only: [:edit, :update, :destroy]
 
   # Public
 
@@ -64,8 +69,7 @@ class PagesController < ApplicationController
   def set_page
     @page = Page.find params[:id]
 
-    # TheRole: You should define OWNER CHECK OBJECT
-    # When editable object was found
+    # TheRole: object for ownership checking
     @owner_check_object = @page
   end
 
