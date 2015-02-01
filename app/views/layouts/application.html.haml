@@ -15,13 +15,23 @@
     .container
       .row
         .col-md-12.header
-          %h2 TheRole - Authorization Gem for Ruby on Rails with administrative interface.
-          %h3 Semantic, Flexible, Lightweight
+
+          %hr
+
+          %p{ style: "text-align:center" }
+            Authorization gem for Ruby on Rails with Management Panel
+
+          %p{ style: "text-align:center" }
+            = link_to "https://github.com/the-teacher/the_role" do
+              = image_tag "https://raw.githubusercontent.com/TheRole/TheRoleApi/master/docs/the_role.png", alt: 'TheRole 3.0', width: 150
+
+          %p{ style: "text-align:center" }
+            Semantic. Flexible. Lightweigh
+
+          %hr
 
       .row
         .col-md-3.manage_panel
-          = yield :role_sidebar
-
           %h4 Basic links
 
           %ul
@@ -37,24 +47,14 @@
 
         .col-md-9.main_content
           = render partial: 'the_notification/flash', locals: { format: :json }
-
-          / - if flash[:notice]
-          /   .alert.alert-success
-          /     %a.close{:href => '#', 'data-dismiss' => :alert } &times;
-          /     = flash[:notice]
-
-          / - if flash[:error]
-          /   .alert.alert-danger
-          /     %a.close{:href => '#', 'data-dismiss' => :alert } &times;
-          /     = flash[:error]
-
           = yield
-          = yield :role_main
+
+      %hr
 
       .row
         .col-md-3
           %p
-            = link_to 'TheRole 2', 'https://github.com/the-teacher/the_role'
+            = link_to 'TheRole 3', 'https://github.com/the-teacher/the_role'
         .col-md-9
           %p
             = link_to 'en', '/?locale=en'

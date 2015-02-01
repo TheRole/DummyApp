@@ -35,6 +35,7 @@ bundle
 ### Start it!
 
 ```
+rake assets:drop
 rake db:bootstrap_and_seed
 
 rails s
@@ -52,8 +53,8 @@ rspec spec/models/ --format documentation
 ### Production mode
 
 ```
-rake assets:build   RAILS_ENV=production
-rake db:test_launch RAILS_ENV=production
+RAILS_ENV=production rake assets:build
+RAILS_ENV=production rake db:bootstrap_and_seed
 
 rails s -e production
 ```

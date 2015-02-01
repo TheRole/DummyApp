@@ -222,8 +222,9 @@ describe Role do
     end
 
     it "should has any rules 2" do
-      expect(@role.has?(:pages,    :index)).to be_truthy
-      expect(@role.has?(:articles, :index)).to be_falsey
+      expect(@role.has?(:pages,    :index)).to  be_truthy
+      expect(@role.has?(:pages,    :secret)).to be_falsey
+      expect(@role.has?(:articles, :index)).to  be_falsey
 
       expect(@role.any?({ pages:    [:index] })).to be_truthy
       expect(@role.any?({ articles: [:index] })).to be_falsey
@@ -231,6 +232,11 @@ describe Role do
       expect(@role.any?({ articles: [:index] })).to be_falsey
       expect(@role.any?({ pages: [:index], articles: [:index]})).to be_truthy
       expect(@role.any?({ pages: [:index, :update]})).to be_truthy
+
+      expect(@role.any?(pages: :secret)).to          be_falsey
+      expect(@role.any?(pages: [:secret])).to        be_falsey
+      expect(@role.any?(pages: [:edit, :secret])).to be_truthy
+      expect(@role.any?(pages: :secret, articles: :index)).to be_falsey
     end
 
     it "should has any rules 3, easy syntaxis" do

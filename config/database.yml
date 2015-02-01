@@ -10,6 +10,12 @@ test:
   pool: 5
   timeout: 5000
 
+production:
+  adapter: sqlite3
+  database: db/the_role_prod.db
+  pool: 5
+  timeout: 5000
+
 # development:
 #   adapter:  postgresql
 #   database: the_role
