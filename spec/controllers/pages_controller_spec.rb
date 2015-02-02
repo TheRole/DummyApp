@@ -20,7 +20,7 @@ describe PagesController do
     @owner     = FactoryGirl.create(:user, role: @role)
     @hacker    = FactoryGirl.create(:user, role: @role)
     @moderator = FactoryGirl.create(:user, role: @moderator_role)
-    
+
     @owner.pages.create! valid_page_for(@owner)
   end
 
@@ -79,8 +79,8 @@ describe PagesController do
           new_title = "test_title"
 
           expect {
-            patch :update, id: @page, page: { title: new_title }
-            @page.reload  
+            put :update, id: @page, page: { title: new_title }
+            @page.reload
           }.to change(@page, :title).from(old_title).to(new_title)
         end
       end
@@ -92,7 +92,7 @@ describe PagesController do
       it "hacker should be blocked" do
         sign_in @hacker
         @request.env['HTTP_REFERER'] = '/'
-        patch :update, id: @page, page: { title: "test_title" }
+        put :update, id: @page, page: { title: "test_title" }
         expect(response.body).to match access_denied_match
       end
     end
@@ -110,8 +110,8 @@ describe PagesController do
       sign_in @owner
 
       expect {
-        patch :update, id: @page, page: { title: @new_title }
-        @page.reload  
+        put :update, id: @page, page: { title: @new_title }
+        @page.reload
       }.to change(@page, :title).from(@old_title).to(@new_title)
     end
 
@@ -119,8 +119,8 @@ describe PagesController do
       sign_in @moderator
 
       expect {
-        patch :update, id: @page, page: { title: @new_title }
-        @page.reload 
+        put :update, id: @page, page: { title: @new_title }
+        @page.reload
       }.to change(@page, :title).from(@old_title).to(@new_title)
     end
 
@@ -129,8 +129,8 @@ describe PagesController do
       @request.env['HTTP_REFERER'] = '/'
 
       expect {
-        patch :update, id: @page, page: { title: @new_title }
-        @page.reload  
+        put :update, id: @page, page: { title: @new_title }
+        @page.reload
       }.not_to change(@page, :title)
     end
   end

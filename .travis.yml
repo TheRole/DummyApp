@@ -15,6 +15,7 @@ gemfile:
   - Gemfile
   - gemfiles/4.1.gemfile
   - gemfiles/4.0.gemfile
+  - gemfiles/3.2.21.gemfile
 
 before_script:
   - mysql -e 'create database the_role'

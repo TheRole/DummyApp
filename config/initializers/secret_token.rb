@@ -9,4 +9,5 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
+Rails.application.config.secret_token    = '2c8a4e21c8caf3b6bac299ada85d1975c83931ab44c0b38c95b327b39da0d779a2f9c363ccf3af5786a0af34dcd13945c9e8be7c10be9e8dddbbf41c1a5b39c7'
 Rails.application.config.secret_key_base = '2c8a4e21c8caf3b6bac299ada85d1975c83931ab44c0b38c95b327b39da0d779a2f9c363ccf3af5786a0af34dcd13945c9e8be7c10be9e8dddbbf41c1a5b39c7'

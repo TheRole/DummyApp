@@ -1,4 +1,15 @@
 class ApplicationController < ActionController::Base
+
+  if Rails::VERSION::MAJOR == 3
+    class << self
+      alias_method :before_action, :before_filter
+      alias_method :around_action, :around_filter
+      alias_method :after_action,  :after_filter
+
+      alias_method :skip_before_action, :skip_before_filter
+    end
+  end
+
   include TheRole::Controller
 
   # Prevent CSRF attacks by raising an exception.
