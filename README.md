@@ -35,7 +35,7 @@ bundle
 ### Start it!
 
 ```
-rake assets:drop
+rake assets:drop # or rake assets:clean
 rake db:bootstrap_and_seed
 
 rails s

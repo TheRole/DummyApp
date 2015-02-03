@@ -11,5 +11,5 @@ TheRole.configure do |config|
   # config.first_user_should_be_admin = false
 
   # config.access_denied_method       = :access_denied
-  # config.destroy_strategy           = :restrict_with_exception # can be nil
+  # config.destroy_strategy           = :nil
 end
