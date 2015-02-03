@@ -25,8 +25,7 @@ class UsersController < ApplicationController
   def find_user
     @user = User.find params[:id]
 
-    # TheRole: You should define OWNER CHECK OBJECT
-    # When editable object was found
-    @owner_check_object = @user
+    # TheRole: You have to define object for ownership check
+    for_ownership_check(@user)
   end
 end
