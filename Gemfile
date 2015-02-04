@@ -12,7 +12,7 @@ gem 'sqlite3'
 gem 'devise'
 
 #~~~~~~~~~~~~~~~~~ TheRole ~~~~~~~~~~~~~~~~~#
-gem 'the_role', '~> 3.0'
+gem 'the_role', '~> 3.0.1'
   # github: 'the-teacher/the_role',
   # branch: 'master'
 
