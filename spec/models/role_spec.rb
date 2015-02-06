@@ -32,14 +32,14 @@ describe Role do
 
     it "New/Create, without Role hash, default Role hash value" do
       role = FactoryGirl.create :role_without_rules
-      expect(role.the_role).to eq("{}")
-      expect(role.to_hash).to  eq({})
+      expect(role.to_json).to eq("{}")
+      expect(role.to_hash).to eq({})
     end
 
     it "New/Create, role methods result types" do
       role = FactoryGirl.create :role_without_rules
-      expect(role.the_role).to be_an_instance_of String
-      expect(role.to_hash).to  be_an_instance_of Hash
+      expect(role.to_json).to be_an_instance_of String
+      expect(role.to_hash).to be_an_instance_of Hash
     end
 
     it "New/Create, role have to be stored in DB as JSON String" do
@@ -50,8 +50,8 @@ describe Role do
         the_role: { any_section: { any_rule: true } }
       )
 
-      expect(r.the_role.class).to eq String
-      expect(r.the_role).to eq "{\"any_section\":{\"any_rule\":true}}"
+      expect( [Hash, String].include?(r.the_role.class) ).to be_truthy
+      expect(r.to_json).to eq "{\"any_section\":{\"any_rule\":true}}"
 
       r = Role.create!(
         name:  :test_name1,
@@ -60,8 +60,8 @@ describe Role do
         the_role: "{\"any_section\":{\"any_rule\":false}}"
       )
 
-      expect(r.the_role.class).to eq String
-      expect(r.the_role).to eq "{\"any_section\":{\"any_rule\":false}}"
+      expect( [Hash, String].include?(r.the_role.class) ).to be_truthy
+      expect(r.to_json).to eq "{\"any_section\":{\"any_rule\":false}}"
     end
   end
 
