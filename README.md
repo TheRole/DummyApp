@@ -20,7 +20,7 @@ TheRole: <a href="http://badge.fury.io/rb/the_role"><img src="https://badge.fury
 API: <a href="http://badge.fury.io/rb/the_role_api"><img src="https://badge.fury.io/rb/the_role_api.svg" alt="Gem Version" height="18"></a>
 GUI: <a href="http://badge.fury.io/rb/the_role_management_panel"><img src="https://badge.fury.io/rb/the_role_management_panel.svg" alt="Gem Version" height="18"></a>
 CI: <a href="https://travis-ci.org/TheRole/DummyApp"><img src="https://travis-ci.org/TheRole/DummyApp.svg?branch=master" alt="Build Status" height="18"></a>
-<a href="https://www.ruby-toolbox.com/categories/rails_authorization">ruby-toolbox</a>
+&nbsp;<a href="https://www.ruby-toolbox.com/categories/rails_authorization">ruby-toolbox</a>
 </div>
 
 ### How to get?
