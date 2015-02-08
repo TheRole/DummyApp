@@ -12,19 +12,20 @@ gem 'sqlite3'
 gem 'devise'
 
 #~~~~~~~~~~~~~~~~~ TheRole ~~~~~~~~~~~~~~~~~#
-# gem 'the_role', '~> 3.0.1'
+gem 'the_role', '~> 3.0.0'
+
   # github: 'the-teacher/the_role',
   # branch: 'master'
 
-gem 'the_role_api', '~> 3.0.1',
-  # path: '../the_role_api'
-  github: 'TheRole/the_role_api',
-  branch: 'master'
+# gem 'the_role_api', '~> 3.0.1',
+#   path: '../the_role_api'
+#   github: 'TheRole/the_role_api',
+#   branch: 'master'
 
-gem 'the_role_management_panel', '~> 3.0.1',
-  # path: '../the_role_management_panel'
-  github: 'TheRole/the_role_management_panel',
-  branch: 'master'
+# gem 'the_role_management_panel', '~> 3.0.1',
+#   path: '../the_role_management_panel'
+#   github: 'TheRole/the_role_management_panel',
+#   branch: 'master'
 #~~~~~~~~~~~~~~~~~ TheRole ~~~~~~~~~~~~~~~~~#
 
 # Other
