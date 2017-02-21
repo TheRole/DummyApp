@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.7'
 # gem 'rails', '3.2.21'
 # gem 'strong_parameters'
 
-gem 'pg'
+gem 'pg', '0.19.0'
 gem 'mysql2'
 gem 'sqlite3'
 

@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20120314061307) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "pages", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "person_id"
@@ -27,7 +30,7 @@ ActiveRecord::Schema.define(version: 20120314061307) do
     t.string   "name",        default: ""
     t.string   "title",       default: ""
     t.text     "description"
-    t.text     "the_role",                 null: false
+    t.json     "the_role",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53,7 +56,7 @@ ActiveRecord::Schema.define(version: 20120314061307) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

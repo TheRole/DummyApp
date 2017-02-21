@@ -7,10 +7,10 @@ class CreateRoles < ActiveRecord::Migration
       t.text :description
 
       # MySQL, SQLite
-      t.text :the_role, null: false
+      # t.text :the_role, null: false
 
       # PostgreSQL
-      # t.column :the_role, :json, null: false
+      t.column :the_role, :json, null: false
 
       t.timestamps
     end
