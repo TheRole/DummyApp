@@ -23,7 +23,6 @@ case ENV['TEST_ENV']
 end
 
 # Other
-gem 'faker'
 gem 'uglifier'
 gem 'pry-rails'
 gem 'jquery-rails'
