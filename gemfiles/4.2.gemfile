@@ -2,9 +2,12 @@ gem 'rails', '4.2.6'
 gem 'haml-rails'
 gem 'faker'
 
+gem 'mysql2', '0.4.5'
+gem 'pg', '0.20.0'
+gem 'sqlite3', '1.3.13'
+
 if ENV['RAILS_ENV'] != 'development'
   gem 'the_role', '3.8.31'
-
 else
   gem 'the_role',
     path: '../../the_role',

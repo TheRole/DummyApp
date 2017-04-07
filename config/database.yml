@@ -6,10 +6,12 @@ development:
   timeout: 5000
 
 test:
-  adapter: sqlite3
-  database: db/the_role_test.db
+  adapter: mysql2
+  database: the_role_test
   pool: 5
   timeout: 5000
+  username: the-teacher
+  password: qwerty
 
 production:
   adapter: sqlite3

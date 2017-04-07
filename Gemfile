@@ -1,9 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'pg'
-gem 'mysql2'
-gem 'sqlite3'
-
 # User Model
 gem 'devise'
 
