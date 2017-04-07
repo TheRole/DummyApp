@@ -1,38 +1,22 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.6'
-# gem 'rails', '3.2.21'
-# gem 'strong_parameters'
-
 gem 'pg'
 gem 'mysql2'
 gem 'sqlite3'
 
 # User Model
 gem 'devise'
-gem 'haml-rails'
 
-#~~~~~~~~~~~~~~~~~ TheRole ~~~~~~~~~~~~~~~~~#
-if ENV['RAILS_ENV'] != 'development'
-  gem 'the_role', '3.8.31'
+case ENV['TEST_ENV']
+when '3'
+  eval_gemfile "gemfiles/3.2.22.5.gemfile"
+when '4.0'
+  eval_gemfile "gemfiles/4.0.gemfile"
+when '4.1'
+  eval_gemfile "gemfiles/4.1.gemfile"
 else
-  gem 'the_role',
-    path: '../the_role',
-    branch: 'master'
-
-  gem 'the_role_api',
-    path: '../the_role_api',
-    branch: 'master'
-
-  gem 'the_role_management_panel',
-    path: '../the_role_management_panel',
-    branch: 'master'
-
-  gem 'the_string_to_slug',
-    path: '../the_string_to_slug',
-    branch: 'master'
+  eval_gemfile "gemfiles/4.2.gemfile"
 end
-#~~~~~~~~~~~~~~~~~ TheRole ~~~~~~~~~~~~~~~~~#
 
 # Other
 gem 'faker'

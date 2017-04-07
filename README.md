@@ -43,6 +43,7 @@ rails s
 ### Test it!
 
 ```
+bundle install
 RAILS_ENV=test rake db:bootstrap
 RAILS_ENV=test rspec --format documentation
 
@@ -61,25 +62,31 @@ rails s -e production
 ### Testing with different envs
 
 ```
-rm gemfiles/3.2.22.5.gemfile.lock
-BUNDLE_GEMFILE=gemfiles/3.2.22.5.gemfile bundle install
-BUNDLE_GEMFILE=gemfiles/3.2.22.5.gemfile RAILS_ENV=test rake db:bootstrap
-BUNDLE_GEMFILE=gemfiles/3.2.22.5.gemfile RAILS_ENV=test rspec --format documentation
-rm gemfiles/3.2.22.5.gemfile.lock
+rm Gemfile.lock
+TEST_ENV=3 bundle install
+TEST_ENV=3 RAILS_ENV=test rake db:bootstrap
+TEST_ENV=3 RAILS_ENV=test rspec --format documentation
+rm Gemfile.lock
 ```
 
 ```
-rm gemfiles/4.1.gemfile.lock
-BUNDLE_GEMFILE=gemfiles/4.1.gemfile bundle install
-BUNDLE_GEMFILE=gemfiles/4.1.gemfile RAILS_ENV=test rake db:bootstrap
-BUNDLE_GEMFILE=gemfiles/4.1.gemfile RAILS_ENV=test rspec --format documentation
-rm gemfiles/4.1.gemfile.lock
+rm Gemfile.lock
+TEST_ENV=4.0 bundle install
+TEST_ENV=4.0 RAILS_ENV=test rake db:bootstrap
+TEST_ENV=4.0 RAILS_ENV=test rspec --format documentation
+rm Gemfile.lock
 ```
 
 ```
-rm gemfiles/4.0.gemfile.lock
-BUNDLE_GEMFILE=gemfiles/4.0.gemfile bundle install
-BUNDLE_GEMFILE=gemfiles/4.0.gemfile RAILS_ENV=test rake db:bootstrap
-BUNDLE_GEMFILE=gemfiles/4.0.gemfile RAILS_ENV=test rspec --format documentation
-rm gemfiles/4.0.gemfile.lock
+rm Gemfile.lock
+TEST_ENV=4.1 bundle install
+TEST_ENV=4.1 RAILS_ENV=test rake db:bootstrap
+TEST_ENV=4.1 RAILS_ENV=test rspec --format documentation
+rm Gemfile.lock
+```
+
+```
+bundle install
+RAILS_ENV=test rake db:bootstrap
+RAILS_ENV=test rspec --format documentation
 ```

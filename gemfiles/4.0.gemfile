@@ -1,40 +1,5 @@
-source 'https://rubygems.org'
-
 gem 'rails', '4.0.0'
 
-gem 'the_role', '3.8.31'
 gem 'haml-rails'
+gem 'the_role', '3.8.31'
 gem 'bootstrap-sass', '3.1.0.0'
-
-gem 'pg'
-gem 'mysql2'
-gem 'sqlite3'
-
-# User Model
-gem 'devise'
-
-# Other
-gem 'faker'
-gem 'uglifier'
-gem 'pry-rails'
-gem 'jquery-rails'
-gem 'jbuilder', '~> 1.0.1'
-
-group :test do
-  gem 'minitest'
-  gem "minitest-rails"
-  gem 'test-unit' if RUBY_VERSION >= '2.2'
-
-  gem 'database_cleaner'
-  gem 'factory_girl_rails', '~> 4.0'
-
-  %w[
-    rspec-core
-    rspec-expectations
-    rspec-mocks
-    rspec-rails
-    rspec-support
-  ].each do |lib|
-    gem lib, :git => "git://github.com/rspec/#{lib}.git", :branch => 'master'
-  end
-end
