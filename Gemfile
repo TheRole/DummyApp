@@ -7,15 +7,19 @@ gem 'sqlite3'
 # User Model
 gem 'devise'
 
+if ENV['RUBY_VERSION'] =~ /(1.9)|(2.0)/
+  gem 'nokogiri', '1.6.8.1'
+end
+
 case ENV['TEST_ENV']
-when '3'
-  eval_gemfile "gemfiles/3.2.22.5.gemfile"
-when '4.0'
-  eval_gemfile "gemfiles/4.0.gemfile"
-when '4.1'
-  eval_gemfile "gemfiles/4.1.gemfile"
-else
-  eval_gemfile "gemfiles/4.2.gemfile"
+  when '3'
+    eval_gemfile "gemfiles/3.2.22.5.gemfile"
+  when '4.0'
+    eval_gemfile "gemfiles/4.0.gemfile"
+  when '4.1'
+    eval_gemfile "gemfiles/4.1.gemfile"
+  else
+    eval_gemfile "gemfiles/4.2.gemfile"
 end
 
 # Other

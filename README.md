@@ -43,7 +43,9 @@ rails s
 ### Test it!
 
 ```
+gem install bundler # >= 1.14.6
 bundle install
+
 RAILS_ENV=test rake db:bootstrap
 RAILS_ENV=test rspec --format documentation
 
@@ -86,7 +88,9 @@ rm Gemfile.lock
 ```
 
 ```
+rm Gemfile.lock
 bundle install
 RAILS_ENV=test rake db:bootstrap
 RAILS_ENV=test rspec --format documentation
+rm Gemfile.lock
 ```
