@@ -57,3 +57,11 @@ RAILS_ENV=production rake db:bootstrap_and_seed
 
 rails s -e production
 ```
+
+### Testing with different envs
+
+```
+BUNDLE_GEMFILE=gemfiles/4.1.gemfile bundle install
+BUNDLE_GEMFILE=gemfiles/4.1.gemfile RAILS_ENV=test rake db:bootstrap
+BUNDLE_GEMFILE=gemfiles/4.1.gemfile RAILS_ENV=test rspec --format documentation
+```
