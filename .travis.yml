@@ -5,6 +5,15 @@ os:
   - osx
 
 env:
+  - TEST_ENV=3 DB=sqlite
+  - TEST_ENV=3 DB=mysql
+  - TEST_ENV=3 DB=postgresql
+  - TEST_ENV=4 DB=sqlite
+  - TEST_ENV=4 DB=mysql
+  - TEST_ENV=4 DB=postgresql
+  - TEST_ENV=4.1 DB=sqlite
+  - TEST_ENV=4.1 DB=mysql
+  - TEST_ENV=4.1 DB=postgresql
   - DB=sqlite
   - DB=mysql
   - DB=postgresql
@@ -17,13 +26,10 @@ rvm:
 
 gemfile:
   - Gemfile
-  - gemfiles/4.1.gemfile
-  - gemfiles/4.0.gemfile
-  - gemfiles/3.2.22.5.gemfile
 
 before_script:
   - mysql -e 'create database the_role'
   - psql  -c 'create database the_role' -U postgres
   - cp config/database.yml.ci config/database.yml
 
-script: "bundle exec rake db:bootstrap && bundle exec rspec --format documentation"
+script: "bundle install && bundle exec rake db:bootstrap && bundle exec rspec --format documentation"
