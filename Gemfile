@@ -1,7 +1,14 @@
 source 'https://rubygems.org'
 
 # User Model
-gem 'devise'
+gem 'devise', '4.2.0'
+
+if ENV['RUBY_VERSION'] =~ /(1.9)/
+  gem 'pg', '0.18.4'
+  gem 'mime-types', '2.6.2'
+else
+  gem 'pg', '0.20.0'
+end
 
 if ENV['RUBY_VERSION'] =~ /(1.9)|(2.0)/
   gem 'nokogiri', '1.6.8.1'
