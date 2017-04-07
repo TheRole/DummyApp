@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'
 
-gem 'the_role', '3.8.3'
+gem 'the_role', '3.8.31'
 gem 'haml-rails'
 gem 'bootstrap-sass', '3.1.0.0'
 

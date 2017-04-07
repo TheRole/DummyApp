@@ -14,7 +14,7 @@ gem 'haml-rails'
 
 #~~~~~~~~~~~~~~~~~ TheRole ~~~~~~~~~~~~~~~~~#
 if ENV['RAILS_ENV'] != 'development'
-  gem 'the_role', '3.8.3'
+  gem 'the_role', '3.8.31'
 else
   gem 'the_role',
     path: '../the_role',
