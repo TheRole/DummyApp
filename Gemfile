@@ -10,22 +10,28 @@ gem 'sqlite3'
 
 # User Model
 gem 'devise'
+gem 'haml-rails'
 
 #~~~~~~~~~~~~~~~~~ TheRole ~~~~~~~~~~~~~~~~~#
-gem 'the_role', '~> 3.0.2'
+if ENV['RAILS_ENV'] != 'development'
+  gem 'the_role', '3.8.2'
+else
+  gem 'the_role',
+    path: '../the_role',
+    branch: 'master'
 
-  # github: 'the-teacher/the_role',
-  # branch: 'master'
+  gem 'the_role_api',
+    path: '../the_role_api',
+    branch: 'master'
 
-# gem 'the_role_api', '~> 3.0.1',
-#   path: '../the_role_api'
-#   github: 'TheRole/the_role_api',
-#   branch: 'master'
+  gem 'the_role_management_panel',
+    path: '../the_role_management_panel',
+    branch: 'master'
 
-# gem 'the_role_management_panel', '~> 3.0.1',
-#   path: '../the_role_management_panel'
-#   github: 'TheRole/the_role_management_panel',
-#   branch: 'master'
+  gem 'the_string_to_slug',
+    path: '../the_string_to_slug',
+    branch: 'master'
+end
 #~~~~~~~~~~~~~~~~~ TheRole ~~~~~~~~~~~~~~~~~#
 
 # Other
