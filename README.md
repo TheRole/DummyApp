@@ -61,7 +61,25 @@ rails s -e production
 ### Testing with different envs
 
 ```
+rm gemfiles/3.2.22.5.gemfile.lock
+BUNDLE_GEMFILE=gemfiles/3.2.22.5.gemfile bundle install
+BUNDLE_GEMFILE=gemfiles/3.2.22.5.gemfile RAILS_ENV=test rake db:bootstrap
+BUNDLE_GEMFILE=gemfiles/3.2.22.5.gemfile RAILS_ENV=test rspec --format documentation
+rm gemfiles/3.2.22.5.gemfile.lock
+```
+
+```
+rm gemfiles/4.1.gemfile.lock
 BUNDLE_GEMFILE=gemfiles/4.1.gemfile bundle install
 BUNDLE_GEMFILE=gemfiles/4.1.gemfile RAILS_ENV=test rake db:bootstrap
 BUNDLE_GEMFILE=gemfiles/4.1.gemfile RAILS_ENV=test rspec --format documentation
+rm gemfiles/4.1.gemfile.lock
+```
+
+```
+rm gemfiles/4.0.gemfile.lock
+BUNDLE_GEMFILE=gemfiles/4.0.gemfile bundle install
+BUNDLE_GEMFILE=gemfiles/4.0.gemfile RAILS_ENV=test rake db:bootstrap
+BUNDLE_GEMFILE=gemfiles/4.0.gemfile RAILS_ENV=test rspec --format documentation
+rm gemfiles/4.0.gemfile.lock
 ```
